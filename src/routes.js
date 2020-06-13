@@ -15,7 +15,7 @@ function CustomRoute({ isPrivate, ...rest }) {
   }
 
   if (isPrivate && !authenticated) {
-    return <Redirect to="/signin" />
+    return <Redirect to="/signup" />
   }
 
   return <Route {...rest} />;
@@ -24,8 +24,8 @@ function CustomRoute({ isPrivate, ...rest }) {
 export default function Routes() {
   return (
     <Switch>
-      <CustomRoute path="/signin" component={SignIn} />
       <CustomRoute path="/signup" component={SignUp} />
+      <CustomRoute path="/signin" component={SignIn} />
 
       <CustomRoute path="/" isPrivate exact component={Home} />
     </Switch>
