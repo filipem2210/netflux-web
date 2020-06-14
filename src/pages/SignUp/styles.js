@@ -6,6 +6,7 @@ export const Main = styled.main`
   min-height: 100vh;
   min-height: 450px;
   width: 100%;
+  background: #000;
   background-image: url(${backgroundImage});
   background-size: cover;
   background-repeat: no-repeat;
