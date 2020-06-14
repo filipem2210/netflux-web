@@ -6,10 +6,13 @@ import history from './services/history';
 
 import { AuthProvider } from './contexts/authContext';
 
+import GlobalStyle from './globalStyles';
+
 function App() {
   return (
     <AuthProvider>
       <Router history={history}>
+        <GlobalStyle />
         <Routes />
       </Router>
     </AuthProvider>
