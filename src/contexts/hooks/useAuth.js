@@ -31,7 +31,7 @@ export default function useAuth() {
       api.defaults.headers.Authorization = `Bearer ${token}`;
       setAuthenticated(true);
     }
-    history.push('/');
+    history.push('/browse');
   }
 
   async function handleSignUp() {
@@ -47,7 +47,7 @@ export default function useAuth() {
       api.defaults.headers.Authorization = `Bearer ${token}`;
       setAuthenticated(true);
     }
-    history.push('/');
+    history.push('/browse');
   }
 
   function handleSignOut() {
