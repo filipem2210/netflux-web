@@ -6,7 +6,7 @@ import { IoIosArrowForward as ArrowRight } from 'react-icons/io';
 
 import { Context } from '../../contexts/authContext';
 
-import { Main, Container, Header, Wrapper } from './styles';
+import { Main } from './styles';
 
 import logo from '../../assets/logo.svg';
 
@@ -29,12 +29,12 @@ export default function SignUp() {
 
   return (
     <Main>
-      <Container>
-        <Header>
+      <section>
+        <header>
           <img src={logo} alt="Netflux Logo" />
           <Link to="/signin">Entrar</Link>
-        </Header>
-        <Wrapper>
+        </header>
+        <div>
           <h1>Filmes, séries e muito mais. Sem limites.</h1>
           <h2>Assista onde quiser. Cancele quando quiser.</h2>
           <Formik
@@ -46,7 +46,7 @@ export default function SignUp() {
               handleSignUp(values);
             }}
           >
-            {(props) => (
+            {({ errors, touched }) => (
               <>
                 <Form>
                   <Field
@@ -54,11 +54,11 @@ export default function SignUp() {
                     type="email"
                     placeholder=" "
                     className={
-                      props.errors.email && 'required'
+                      errors.email && touched.email ? 'required' : null
                     }
                   />
                   <label>Email</label>
-                  <button type="submit" onClick={() => checkEmptyEmailInput()}>Assine a Netflix <ArrowRight size={30} /></button>
+                  <button type="submit" onClick={() => checkEmptyEmailInput()}>Vamos lá <ArrowRight size={30} /></button>
                 </Form>
                 <p><ErrorMessage name="email" /></p>
               </>
@@ -66,8 +66,8 @@ export default function SignUp() {
           </Formik>
 
           <h3>Pronto para assistir? Informe seu email para criar ou reiniciar sua assinatura.</h3>
-        </Wrapper>
-      </Container>
+        </div>
+      </section>
     </Main >
   );
 }
