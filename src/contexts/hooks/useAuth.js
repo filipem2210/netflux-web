@@ -18,12 +18,7 @@ export default function useAuth() {
     setLoading(false);
   }, []);
 
-  async function handleSignIn() {
-    const data = {
-      email: "email@gmail.com",
-      password: "123456"
-    }
-
+  async function handleSignIn(data) {
     const { data: { token } } = await api.post('/signin', data);
 
     if (token) {
@@ -34,12 +29,7 @@ export default function useAuth() {
     history.push('/browse');
   }
 
-  async function handleSignUp() {
-    const data = {
-      email: "email12@gmail.com",
-      password: "123456"
-    }
-
+  async function handleSignUp(data) {
     const { data: { token } } = await api.post('/signup', data);
 
     if (token) {
