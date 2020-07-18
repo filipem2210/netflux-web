@@ -22,6 +22,14 @@ const validationSchema = Yup.object().shape({
 export default function SignIn() {
   const { handleSignIn } = useContext(Context);
 
+  function checkEmptyEmailInput() {
+    const emailInput = document.getElementById('emailSignIn');
+    if (emailInput.value === "") {
+      emailInput.classList.add('required');
+      emailInput.focus();
+    }
+  }
+
   return (
     <Main>
       <section>
@@ -33,7 +41,6 @@ export default function SignIn() {
         <div>
           <h1>Entrar</h1>
           <Formik
-            abo
             initialValues={{
               email: '',
               password: '',
@@ -47,6 +54,7 @@ export default function SignIn() {
               <Form>
                 <div className="input-placement">
                   <Field
+                    id="emailSignIn"
                     name="email"
                     type="email"
                     placeholder=" "
@@ -54,12 +62,13 @@ export default function SignIn() {
                       errors.email && touched.email ? 'required' : null
                     }
                   />
-                  <label>Email</label>
+                  <label htmlFor="emailSignIn">Email</label>
                 </div>
-                {<p><ErrorMessage name="email" /></p>}
+                <p><ErrorMessage name="email" /></p>
 
                 <div className="input-placement">
                   <Field
+                    id="password"
                     name="password"
                     type="password"
                     autoComplete="false"
@@ -69,11 +78,11 @@ export default function SignIn() {
                       errors.password && touched.password ? 'required' : null
                     }
                   />
-                  <label>Senha</label>
+                  <label htmlFor="password">Senha</label>
                 </div>
-                {<p><ErrorMessage name="password" /></p>}
+                <p><ErrorMessage name="password" /></p>
 
-                <button type="submit">Entrar</button>
+                <button type="submit" onClick={() => checkEmptyEmailInput()}>Entrar</button>
               </Form>
             )}
           </Formik>

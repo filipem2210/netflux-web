@@ -4,7 +4,7 @@ import backgroundImage from '../../assets/background-image.jpg';
 
 export const Main = styled.main`
   height: 100vh;
-  min-height: 450px;
+  min-height: 500px;
   width: 100%;
   background: #000;
   background-image: url(${backgroundImage});
@@ -12,7 +12,8 @@ export const Main = styled.main`
   background-repeat: no-repeat;
 
   section {
-    min-height: 100vh;
+    height: 100vh;
+    min-height: 500px;
     width: 100%;
     background: rgba(0, 0, 0, 0.4);
     background-image: linear-gradient(rgba(0, 0, 0, 0.9), transparent, rgba(0, 0, 0, 0.9));
@@ -25,13 +26,12 @@ export const Main = styled.main`
       align-items: center;
 
       img {
-        height: 50px;
+        height: 46px;
+        object-fit: contain;
       }
     }
 
     div {
-      position: relative;
-      width: 100%;
       max-width: 450px;
       padding: 60px 68px;
       margin: 50px auto 0;
@@ -54,7 +54,7 @@ export const Main = styled.main`
           margin: 0;
 
           label{
-            color: #8c8c8c;
+            color: #b1a5a5;
             pointer-events: none;
             position: absolute;
             top: 0px;
