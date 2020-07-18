@@ -5,6 +5,7 @@ import { Context } from './contexts/authContext';
 
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
+import LastStep from './pages/LastStep';
 import Browse from './pages/Browse';
 
 function CustomRoute({ isPrivate, ...rest }) {
@@ -25,6 +26,7 @@ export default function Routes() {
   return (
     <Switch>
       <CustomRoute path="/" exact component={SignUp} />
+      <CustomRoute path="/laststep" exact component={LastStep} />
       <CustomRoute path="/signin" component={SignIn} />
 
       <CustomRoute path="/browse" isPrivate component={Browse} />
