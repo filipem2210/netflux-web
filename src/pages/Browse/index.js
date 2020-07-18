@@ -1,29 +1,26 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React from 'react';
 
-import api from '../../services/api';
-import { Context } from '../../contexts/authContext';
+import Nav from '../../components/Nav';
+import Banner from '../../components/Banner';
+import Row from '../../components/Row';
+import requests from '../../services/requests';
 
-export default function Users() {
-  const { handleSignOut } = useContext(Context);
-  const [movies, setMovies] = useState([]);
-
-  useEffect(() => {
-    (async () => {
-      const { data } = await api.get('/movies');
-
-      setMovies(data);
-    })();
-  }, []);
-
+export default function Browse() {
   return (
-    <>
-      <ul>
-        {movies.map((movie) => (
-          <li key={movie.id}>{movie.title} ({movie.description})</li>
-        ))}
-      </ul>
-
-      <button type="button" onClick={handleSignOut}>Sair</button>
-    </>
+    <main className="browse">
+      <Nav />
+      <Banner />
+      <Row
+        title="Netflix Originals"
+        fetchUrl={requests.fetchNetflixOriginals}
+        isLargeRow
+      />
+      <Row title="Top Rated" fetchUrl={requests.fetchTopRated} />
+      <Row title="Trending Now" fetchUrl={requests.fetchTrending} />
+      <Row title="Action Movies" fetchUrl={requests.fetchActionMovies} />
+      <Row title="Comedy Movies" fetchUrl={requests.fetchComedyMovies} />
+      <Row title="Horror Movies" fetchUrl={requests.fetchHorrorMovies} />
+      <Row title="Documentaries" fetchUrl={requests.fetchDocumentaries} />
+    </main>
   );
 }
