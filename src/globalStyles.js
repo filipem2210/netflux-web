@@ -36,4 +36,8 @@ export default createGlobalStyle`
   button {
     cursor: pointer;
   }
+
+  .browse {
+    background-color: #111;
+  }
 `;
