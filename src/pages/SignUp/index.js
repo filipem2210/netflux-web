@@ -1,10 +1,8 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { IoIosArrowForward as ArrowRight } from 'react-icons/io';
-
-import { Context } from '../../contexts/authContext';
 
 import { Main } from './styles';
 
@@ -17,14 +15,21 @@ const validationSchema = Yup.object().shape({
 });
 
 export default function SignUp() {
-  const { handleSignUp } = useContext(Context);
+  const history = useHistory();
 
   function checkEmptyEmailInput() {
-    const emailInput = document.getElementsByName('email')[0];
+    const emailInput = document.getElementById('emailSignUp');
     if (emailInput.value === "") {
+      emailInput.classList.add('required');
       emailInput.focus();
-      emailInput.classList.add('required')
     }
+  }
+
+  function handleSubmit(values) {
+    history.push({
+      pathname: '/laststep',
+      email: values.email
+    });
   }
 
   return (
@@ -43,13 +48,14 @@ export default function SignUp() {
             }}
             validationSchema={validationSchema}
             onSubmit={values => {
-              handleSignUp(values);
+              handleSubmit(values);
             }}
           >
             {({ errors, touched }) => (
               <>
                 <Form>
                   <Field
+                    id="emailSignUp"
                     name="email"
                     type="email"
                     placeholder=" "
@@ -57,7 +63,7 @@ export default function SignUp() {
                       errors.email && touched.email ? 'required' : null
                     }
                   />
-                  <label>Email</label>
+                  <label htmlFor="emailSignUp">Email</label>
                   <button type="submit" onClick={() => checkEmptyEmailInput()}>Vamos lá <ArrowRight size={30} /></button>
                 </Form>
                 <p><ErrorMessage name="email" /></p>
