@@ -15,9 +15,16 @@ export default function Banner() {
   const [movie, setMovie] = useState([]);
 
   useEffect(() => {
+    function randomInt(min, max) {
+      return min + Math.floor((max - min) * Math.random());
+    }
+
     async function fetchData() {
       const { data } = await api.get(requests.fetchNetflixOriginals);
-      setMovie(data[Math.floor(Math.random() * data.length - 1)]);
+      const randomNumber = randomInt(0, data.length);
+      console.log(randomNumber);
+      const randomMovie = data[randomNumber];
+      setMovie(randomMovie);
       return data;
     }
     fetchData();
@@ -31,7 +38,7 @@ export default function Banner() {
     <header
       className='banner'
       style={{
-        backgroundImage: `url(${base_url_img + movie?.backdrop_path})`,
+        backgroundImage: `url(${movie?.backdrop_path && base_url_img + movie.backdrop_path})`,
       }}
     >
       <div className='banner_contents'>
