@@ -22,7 +22,6 @@ export default function Banner() {
     async function fetchData() {
       const { data } = await api.get(requests.fetchNetflixOriginals);
       const randomNumber = randomInt(0, data.length);
-      console.log(randomNumber);
       const randomMovie = data[randomNumber];
       setMovie(randomMovie);
       return data;
