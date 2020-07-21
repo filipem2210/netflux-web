@@ -19,7 +19,7 @@ export default function Row({ title, fetchUrl, isLargeRow }) {
       return data;
     }
     fetchData();
-  }, [fetchUrl, isLargeRow]);
+  }, [fetchUrl]);
 
   const opts = {
     height: "390",
