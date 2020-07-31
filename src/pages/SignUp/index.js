@@ -64,7 +64,12 @@ export default function SignUp() {
                     }
                   />
                   <label htmlFor="emailSignUp">Email</label>
-                  <button type="submit" onClick={() => checkEmptyEmailInput()}>Vamos lá <ArrowRight size={30} /></button>
+                  <button
+                    type="submit"
+                    onClick={() => checkEmptyEmailInput()}
+                  >
+                    Vamos lá <ArrowRight size={30} />
+                  </button>
                 </Form>
                 <p><ErrorMessage name="email" /></p>
               </>
