@@ -16,7 +16,7 @@ const validationSchema = Yup.object().shape({
     .required('A senha é obrigatória'),
 });
 
-export default function LastStep({ data }) {
+export default function LastStep() {
   const { handleSignUp } = useContext(Context);
   const { email } = useLocation();
 
@@ -38,10 +38,14 @@ export default function LastStep({ data }) {
       </header>
       <section>
         <div className="content">
-          <p className="steps">Passo <strong>1</strong> de <strong>3</strong></p>
+          <p className="steps">
+            Passo <strong>1</strong> de <strong>3</strong>
+          </p>
           <h1>Bem-vindo(a) de volta!</h1>
           <h2>É fácil assinar a Netflix.</h2>
-          <p className="instruction">Informe sua senha para começar a assistir.</p>
+          <p className="instruction">
+            Informe sua senha para começar a assistir.
+          </p>
           <p className="email_label">Email</p>
           <p className="email">{email}</p>
           <Formik
@@ -74,8 +78,12 @@ export default function LastStep({ data }) {
                   <label htmlFor="passwordLastStep">Informe a senha</label>
                 </div>
                 <p className="error"><ErrorMessage name="password" /></p>
-
-                <p><a href="/forgot_pwd" className="forgot_password">Esqueceu a senha?</a></p>
+                <p>
+                  <a
+                    href="#forgot_pwd"
+                    className="forgot_password"
+                  >Esqueceu a senha?</a>
+                </p>
                 <button
                   type="submit"
                   className="continue"
