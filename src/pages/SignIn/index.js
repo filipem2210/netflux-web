@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
@@ -30,6 +31,14 @@ export default function SignIn() {
     }
   }
 
+  async function handleSubmit(values) {
+    const result = await handleSignIn(values);
+
+    if (result?.error) {
+      toast.error(result.error);
+    }
+  }
+
   return (
     <Main>
       <section>
@@ -47,7 +56,7 @@ export default function SignIn() {
             }}
             validationSchema={validationSchema}
             onSubmit={values => {
-              handleSignIn(values);
+              handleSubmit(values);
             }}
           >
             {({ errors, touched }) => (
