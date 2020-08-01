@@ -1,5 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
+import 'react-toastify/dist/ReactToastify.css';
+
 export default createGlobalStyle`
   * {
     margin: 0;
@@ -39,5 +41,9 @@ export default createGlobalStyle`
 
   .browse {
     background-color: #111;
+  }
+
+  .Toastify__toast-container {
+    padding: 0;
   }
 `;
