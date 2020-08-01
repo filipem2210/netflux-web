@@ -20,25 +20,36 @@ export default function useAuth() {
   }, []);
 
   async function handleSignIn(data) {
-    const { data: { token } } = await api.post('/signin', data);
+    try {
+      const { data: { token } } = await api.post('/signin', data);
 
-    if (token) {
-      localStorage.setItem('token', token);
-      api.defaults.headers.Authorization = `Bearer ${token}`;
-      setAuthenticated(true);
+      if (token) {
+        localStorage.setItem('token', token);
+        api.defaults.headers.Authorization = `Bearer ${token}`;
+        setAuthenticated(true);
+      }
+
+      return history.push('/browse');
+    } catch (error) {
+      const { response: { data } } = error;
+      return data;
     }
-    history.push('/browse');
   }
 
   async function handleSignUp(data) {
-    const { data: { token } } = await api.post('/signup', data);
+    try {
+      const { data: { token } } = await api.post('/signup', data);
 
-    if (token) {
-      localStorage.setItem('token', token);
-      api.defaults.headers.Authorization = `Bearer ${token}`;
-      setAuthenticated(true);
+      if (token) {
+        localStorage.setItem('token', token);
+        api.defaults.headers.Authorization = `Bearer ${token}`;
+        setAuthenticated(true);
+      }
+      return history.push('/browse');
+    } catch (error) {
+      const { response: { data } } = error;
+      return data;
     }
-    history.push('/browse');
   }
 
   function handleSignOut() {
