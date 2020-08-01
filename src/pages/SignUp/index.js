@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { toast } from 'react-toastify';
 import * as Yup from 'yup';
 import { IoIosArrowForward as ArrowRight } from 'react-icons/io';
+
+import api from '../../services/api';
 
 import { Main } from './styles';
 
@@ -25,11 +28,18 @@ export default function SignUp() {
     }
   }
 
-  function handleSubmit(values) {
-    history.push({
-      pathname: '/laststep',
-      email: values.email
-    });
+  async function handleSubmit(values) {
+    try {
+      await api.post('/checkUser', values);
+
+      history.push({
+        pathname: '/laststep',
+        email: values.email
+      });
+    } catch (error) {
+      const { response: { data } } = error;
+      toast.error(data.error);
+    }
   }
 
   return (
