@@ -66,13 +66,18 @@ export default function Nav() {
   }
 
   useEffect(() => {
-    window.addEventListener("scroll", () => {
+    const listener = function () {
       if (window.scrollY > 50) {
         setShow(true);
       } else {
         setShow(false);
       }
-    });
+    }
+    window.addEventListener("scroll", listener, false);
+
+    return () => {
+      window.removeEventListener("scroll", listener, false);
+    }
   }, []);
 
   return (
