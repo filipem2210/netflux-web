@@ -3,28 +3,26 @@
 <p align="center">Netflix clone with backend, frontend and mobile using Node.js, ReactJs and React Native</p>
 
 <p align="center">
-  <img alt="Sign In" src="./src/assets/signin.png">
+  <img alt="Landing Page" src="./src/assets/github/landingPage.png">
 </p>
 <p align="center">
-  <img alt="Sign Up" src="./src/assets/signup.png">
+  <img alt="Sign In" src="./src/assets/github/signin.png">
 </p>
 <p align="center">
-  <img alt="Profile" src="./src/assets/profile.png">
+  <img alt="Browse" src="./src/assets/github/browse.png">
 </p>
 <p align="center">
-  <img alt="Feed" src="./src/assets/feed.png">
+  <img alt="Browse 2" src="./src/assets/github/browse2.png">
 </p>
-
 <p align="center">
-  <a href="https://filipem2210-instaclone-web.herokuapp.com/" target="_blank">
-    <img alt="Demo on Heroku" src="./src/assets/demo_on_heroku.png">
-  </a>
+  <img alt="Movie Info" src="./src/assets/github/movieInfo.png">
 </p>
 
 ## :computer: Technologies
 
 * [ReactJS](https://reactjs.org/)
 * [Axios](https://www.npmjs.com/package/axios)
+* [Editor Config](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
 * [Formik](https://www.npmjs.com/package/formik)
 * [Movie Trailer](https://www.npmjs.com/package/movie-trailer)
 * [Pure React Carousel](https://www.npmjs.com/package/pure-react-carousel)
